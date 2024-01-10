@@ -3,7 +3,7 @@ package ejercicio02;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+import java.util.Map;
 
 
 
@@ -42,7 +42,7 @@ public class ejercicio02 {
     }
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		//Con el Map y Hash map se hace un mapa con el que se guardan valores a ellos asociados
+		//Con el Map y Hash map se hace un mapa con el que se guardan valores a ellos asociados y guardar multiples valores sin crear muchs variables
         Map<String, Cuenta> cuentas = new HashMap<>();
         cuentas.put("usuario1", new Cuenta("usuario1", "clave123", 1000));
         cuentas.put("usuario2", new Cuenta("usuario2", "messi10", 500));
@@ -61,7 +61,7 @@ public class ejercicio02 {
 
         				if (cuentas.containsKey(nuevoId)) {
         				    System.out.println("El ID de cuenta ya está en uso. Operación cancelada.");
-        				    return;
+        				   
         				} else {
         				    System.out.println("Ingrese una nueva contraseña: ");
         				    String nuevaContrasena = scanner.nextLine();
@@ -84,13 +84,7 @@ public class ejercicio02 {
         		        if (cuentas.containsKey(idCuenta) && cuentas.get(idCuenta).verificarContrasena(contrasena)) {
         		        	boolean sesionActiva = true;
         		        	while(sesionActiva) {
-        		        	System.out.println("Seleccione una opcion :");
-        		        	System.out.println("1 Ingresar");
-        		        	System.out.println("2 Retirar");
-        		        	System.out.println("3 Consultar Saldo");
-        		        	System.out.println("4 Cerrar sesion");
-        		        	System.out.println("5 Salir");
-        		        	
+        		        	System.out.println("Seleccione una opcion : 1-Ingresar 2-Retirar 3-Consultar Saldo 4-Cerrar Sesion 5-Salir");
         		        	opcion = scanner.nextInt();
         		        	switch(opcion) {
         		        	case 1:
@@ -118,13 +112,14 @@ public class ejercicio02 {
         		        		System.out.println("Saldo actual es: " + cuentas.get(idCuenta).getSaldo());
         		        		break;
         		        	case 4:
+        		        		System.out.println("Cerrando Sesion..");
         		        		System.out.println("Cierre de sesión exitoso para la cuenta: " + idCuenta);
         	                    sesionActiva=false;
         	                    break;
         		        	case 5:
-        	                    System.out.println("programa finalizado");
-        	                    
-        	                   continuar=false;
+        		        		System.out.println("Programa finalizado");
+        	                    sesionActiva=false;
+        	                    continuar=false;
         	                    break;
         	                default:
         	                    System.out.println("Opción no válida. Inténtelo de nuevo.");
